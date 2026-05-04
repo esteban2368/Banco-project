@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom'
 
-export const Header = () => {
+export const  AsideMenu = () => {
     return (
-        <header>
-            <h1>BancoXYZ</h1>
+        <div>
+            <h2>BancoXYZ</h2>
             <nav>
                 <ul>
                     <li><Link to="/dashboard">Dashboard</Link></li>
                     <li><Link to="/transfer">Transfer</Link></li>
                 </ul>
             </nav>
-        </header>
+        </div>
     );
-};
+}; 
