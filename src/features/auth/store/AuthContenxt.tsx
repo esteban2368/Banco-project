@@ -15,7 +15,7 @@ const USER_KEY  = 'auth_user';
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
-const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [currentUser, setCurrentUser] = useState<User | null>(()=>{
         const userStored = getLocalStorage(USER_KEY, null);
         return userStored ? JSON.parse(userStored) : null;
