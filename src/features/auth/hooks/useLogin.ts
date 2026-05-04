@@ -1,11 +1,16 @@
 import {  useActionState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import type { User, LoginRequest, AuthResponse } from "../models/User";
 import { authService } from "../services/authService";
 
+import { useAuth } from "../store/AuthContenxt";
+
 const initialState: AuthResponse = { success: false, data: null, message: null };
 
 export const useLogin = () => {
+    const navegate = useNavigate();
+    const { login } = useAuth();
     
     const loginAction = async (
         prevState: unknown, 
@@ -18,6 +23,10 @@ export const useLogin = () => {
         } 
         
         const user = await authService.login(formDataLogin);
+
+        login(user.data as User, user.data?.token as string);
+        navegate('/dashboard');
+
 
         return {
             success: user.success,

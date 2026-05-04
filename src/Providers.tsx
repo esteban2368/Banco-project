@@ -1,4 +1,4 @@
-import {  AuthProvider } from './src/features/auth/store/AuthContenxt';
+import {  AuthProvider } from './features/auth/store/AuthContenxt';
 
 
 export const Providers = ({children}:{ children: React.ReactNode }) => {
