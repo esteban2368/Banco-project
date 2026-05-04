@@ -1,6 +1,6 @@
 import type { Transfer, BalanceApiResponse, Balance } from "../models/Transfer";
 
-export const TransferAdapters = {
+export const transferAdapters = {
    Balance: (balanceData : BalanceApiResponse): Balance => {
         return {
             currency: balanceData.currency,

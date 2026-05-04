@@ -1,5 +1,6 @@
 import axios from "axios";
-import type { TransferApiRequest } from "../models/Transfer";
+import type { TransferApiRequest, BalanceApiResponse } from "../models/Transfer";
+import { transferAdapters } from "../adapters/transferBalance";
 
 const transferApi = axios.create({
     baseURL: "https://ofqx4zxgcf.execute-api.us-east-1.amazonaws.com/default",
@@ -23,6 +24,21 @@ export const transferService = {
     },
 
     getBalance : async () => {
-        return await balanceApi.get("/balance");
+        try {
+            const response = await balanceApi.get<BalanceApiResponse>("/balance");;
+            return {
+                success: true,
+                data: transferAdapters.Balance(response.data),
+                message: null
+            }
+            
+        } catch (error: any) {
+            return {
+                success: false,
+                data: null,
+                message: error.response?.data?.message ||
+                "Error al ontener el balance",
+            };
+        }
     }
 }
