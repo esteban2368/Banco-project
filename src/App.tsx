@@ -9,22 +9,23 @@ import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import TransferPage from "./pages/TransferPage";
 
-import { Providers } from "./Providers"
+import { useAuth } from './features/auth/store/AuthContenxt';
 
 import './App.css'
 
 function App() {
+  const { currentUser } = useAuth();
+
+  const isAutorizated = !!currentUser 
 
   return (
-    <Providers>
       <Routes>
         <Route path='/' element={<LoginPage />} />
-        <Route element={<Guard isAutorizated={true}>  <Layout /></Guard>}>
+        <Route element={<Guard isAutorizated={isAutorizated}>  <Layout /></Guard>}>
           <Route path='/dashboard' element={<DashboardPage />} />
           <Route path='/transfer' element={<TransferPage />} />
         </Route>
       </Routes>
-    </Providers>
   )
 }
 

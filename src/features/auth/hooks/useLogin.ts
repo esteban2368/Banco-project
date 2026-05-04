@@ -27,7 +27,6 @@ export const useLogin = () => {
         login(user.data as User, user.data?.token as string);
         navegate('/dashboard');
 
-
         return {
             success: user.success,
             data: user.data,
