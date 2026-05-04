@@ -4,7 +4,7 @@ import type { User, LoginRequest } from "../models/User";
 import { authService } from "../services/authService";
 
 
-const useLogin = () => {
+export const useLogin = () => {
     const [promise, setPromise] = useState<Promise<User> | null>(null);
 
     const login = (credentials: LoginRequest) => {
@@ -13,5 +13,14 @@ const useLogin = () => {
     
     const user = promise ? use(promise) : null;
 
-    return { login, user };
+    const loginAction = (prevState: unknown, formData: FormData) => {
+        console.log("Login action called with form data:", formData);
+
+        return {
+            name: "hola",
+            email: "hola@example.com",
+        }
+    }
+
+    return { login, user, loginAction };
 };
