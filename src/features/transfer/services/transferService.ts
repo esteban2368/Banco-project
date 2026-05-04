@@ -13,7 +13,7 @@ const balanceApi = axios.create({
     baseURL: "https://2k0ic4z7s5.execute-api.us-east-1.amazonaws.com/default",
 });
 
-export const TransferService = {
+export const transferService = {
     makeTransfer : async (transferData: TransferApiRequest) => {
         return await transferApi.post("/transfer", transferData);
     },
