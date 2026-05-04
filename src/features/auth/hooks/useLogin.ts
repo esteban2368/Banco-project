@@ -1,26 +1,37 @@
-import { use, useState } from "react";
+import {  useActionState } from "react";
 
 import type { User, LoginRequest } from "../models/User";
 import { authService } from "../services/authService";
 
+interface LoginState {
+  user: User | null;
+  message: string | null;
+}
+
+const initialState: LoginState = { user: null, message: null };
 
 export const useLogin = () => {
-    const [promise, setPromise] = useState<Promise<User> | null>(null);
-
-    const login = (credentials: LoginRequest) => {
-        setPromise(authService.login(credentials));
-    };
     
-    const user = promise ? use(promise) : null;
+    const loginAction = async (
+        prevState: unknown, 
+        formData: FormData): Promise<LoginState> => {
 
-    const loginAction = (prevState: unknown, formData: FormData) => {
-        console.log("Login action called with form data:", formData);
-
-        return {
-            name: "hola",
-            email: "hola@example.com",
+        const formDataLogin: LoginRequest = {
+            email: formData.get("email") as string,
+            password: formData.get("password") as string,
+        } 
+        
+        try {
+            const user = await authService.login(formDataLogin);
+            return { user, message: null };
+            
+        } catch (error: any) {
+            return { user: null, message: error?.data?.message};
         }
     }
 
-    return { login, user, loginAction };
+    const [state, dispatch, isPending] = useActionState(loginAction, initialState);
+
+    return { state, dispatch, isPending };
+
 };
