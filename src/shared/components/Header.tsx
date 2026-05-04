@@ -6,8 +6,9 @@ export const Header = () => {
             <h1>Banco App</h1>
             <nav>
                 <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/">Login</Link></li>
+                    <li><Link to="/dashboard">Dashboard</Link></li>
+                    <li><Link to="/transfer">Transfer</Link></li>
                 </ul>
             </nav>
         </header>
