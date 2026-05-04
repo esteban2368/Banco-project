@@ -15,6 +15,13 @@ export interface LoginResponse {
     token: string;
     user: UserFromApi;
 }
+
+export interface AuthResponse { 
+    success: boolean; 
+    data: User | null; 
+    message: string | null 
+}
+
 export interface LoginRequest {
     email: string;
     password: string;

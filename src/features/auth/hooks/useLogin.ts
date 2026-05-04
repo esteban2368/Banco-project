@@ -1,32 +1,28 @@
 import {  useActionState } from "react";
 
-import type { User, LoginRequest } from "../models/User";
+import type { User, LoginRequest, AuthResponse } from "../models/User";
 import { authService } from "../services/authService";
 
-interface LoginState {
-  user: User | null;
-  message: string | null;
-}
-
-const initialState: LoginState = { user: null, message: null };
+const initialState: AuthResponse = { success: false, data: null, message: null };
 
 export const useLogin = () => {
     
     const loginAction = async (
         prevState: unknown, 
-        formData: FormData): Promise<LoginState> => {
+        formData: FormData): Promise<AuthResponse> => {
 
+        console.log("prevState", prevState);
         const formDataLogin: LoginRequest = {
             email: formData.get("email") as string,
             password: formData.get("password") as string,
         } 
         
-        try {
-            const user = await authService.login(formDataLogin);
-            return { user, message: null };
-            
-        } catch (error: any) {
-            return { user: null, message: error?.data?.message};
+        const user = await authService.login(formDataLogin);
+
+        return {
+            success: user.success,
+            data: user.data,
+            message: user.message
         }
     }
 

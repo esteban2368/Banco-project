@@ -1,19 +1,20 @@
-import { useActionState } from "react";
-
 import { Input } from "../../../shared/components/Input";
+import { Button } from "../../../shared/components/Button";
 
 import { useLogin } from "../hooks/useLogin";
 
 export const FormLogin = () => {
-    const { loginAction } = useLogin();
-    const [state, formAction, isPending] = useActionState(loginAction, null);
+    const { state, dispatch, isPending } = useLogin();
 
     return (
         <div>
-            <form action={formAction}>
-                <Input label="Username" name="username" />
+            <form action={dispatch}>
+                <Input label="Email" name="email" />
                 <Input label="Password" name="password" type="password" />
-                <button type="submit">Login</button>
+                <Button type="submit" disabled={isPending}>
+                    {isPending ? "Ingresando" : "Ingresar"}
+                </Button>
+                {state.message && <p style={{ color: 'red' }}>{state.message}</p>}
             </form>
         </div>
     )
