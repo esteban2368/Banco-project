@@ -11,13 +11,13 @@ export interface Balance {
 
 export interface TransferApiRequest {
     value: number;
-    date: string;
+    payeerDocument: string;
     currency: string;
     transferDate: string;
 }
 
 export interface CreateTransferResponse { 
-    success: boolean; 
+    status: string; 
     message: string | null 
 }
 
