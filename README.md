@@ -60,5 +60,17 @@ Para ejecutar la aplicación en modo desarrollo:
 npm run dev
 ```
 
+## Problemas Conocidos
+
+### CORS al consumir servicios
+
+Al consumir los servicios, puede surgir un problema de CORS (Cross-Origin Resource Sharing). Para esta prueba técnica, se optó por deshabilitar las políticas de CORS en el navegador Chrome, siendo conscientes de los peligros que conlleva esta práctica en un entorno de producción.
+
+Para ejecutar Chrome con las políticas de CORS deshabilitadas en Windows, abre un CMD y ejecuta:
+
+```bash
+start chrome --disable-web-security --user-data-dir="C:\chrome_dev" --disable-site-isolation-trials
+```
+
 
 
