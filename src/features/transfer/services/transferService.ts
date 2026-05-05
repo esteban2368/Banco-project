@@ -27,13 +27,13 @@ export const transferService = {
             const response = await transferApi.post<CreateTransferResponse>("/transfer", transferData);
 
             return {
-                success: response.data.status === "success",
+                status: response.data.status,
                 message: response.data.message
             }
             
         } catch (error: any) {
             return {
-                success: error.data.status === "error",
+                status: error.data.status,
                 message: error.response?.data?.message ||
                 "Error al crear la transferencia.",
             }

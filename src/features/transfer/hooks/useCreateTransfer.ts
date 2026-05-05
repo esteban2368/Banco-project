@@ -4,9 +4,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import type { CreateTransferResponse, TransferApiRequest } from "../models/Transfer";
 import { transferService } from "../services/transferService";
 
-import { useAuth } from "../store/AuthContenxt";
-
-const initialState: CreateTransferResponse = { success: false, message: null };
+const initialState: CreateTransferResponse = { status: "", message: null };
 
 export const useCreateTransfer = () => {
     const navegate = useNavigate();
@@ -17,23 +15,21 @@ export const useCreateTransfer = () => {
 
         console.log("prevState", prevState);
         const formDataTransfer: TransferApiRequest = {
-            email: formData.get("email") as string,
-            password: formData.get("password") as string,
+            value: formData.get("value") as unknown as number,
+            payeerDocument: formData.get("payeerDocument") as string,
+            currency: formData.get("currency") as string,
+            transferDate: formData.get("transferDate") as string,
         } 
         
-        const user = await transferService.makeTransfer(formDataTransfer);
-
-        login(user.data as User, user.data?.token as string);
-        navegate('/dashboard');
+        const createTransfer = await transferService.makeTransfer(formDataTransfer);
 
         return {
-            success: user.success,
-            data: user.data,
-            message: user.message
+            status: createTransfer.status,
+            message: createTransfer.message
         }
     }
 
-    const [state, dispatch, isPending] = useActionState(loginAction, initialState);
+    const [state, dispatch, isPending] = useActionState(createTransferAction, initialState);
 
     return { state, dispatch, isPending };
 
