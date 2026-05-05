@@ -25,12 +25,12 @@ export interface TransferApiRequest {
 
 export interface ListTransferResponse {
     message: string;
-    transfer: {
+    transfers: {
         value: number;
         date: string;
         currency: string;
         payeer: Payeer;
-    }
+    }[]
 }
 
 export interface CreateTransferResponse { 

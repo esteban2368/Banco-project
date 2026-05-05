@@ -43,6 +43,7 @@ export const transferService = {
     getTransfers : async () => {
         try {
             const response = await transferListApi.get<ListTransferResponse>("/transferList");
+            console.log(transferAdapters.ListTransfer(response.data))
             return {
                 success: true,
                 data: transferAdapters.ListTransfer(response.data),

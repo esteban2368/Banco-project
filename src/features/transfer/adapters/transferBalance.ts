@@ -8,14 +8,14 @@ export const transferAdapters = {
         };
    },
 
-   ListTransfer: (transferData : ListTransferResponse): Transfer => {
-        return {
-            value: transferData.transfer.value,
-            date: transferData.transfer.date,
-            currency: transferData.transfer.currency,
-            payeerDocument: transferData.transfer.payeer.document,
-            payeerName: transferData.transfer.payeer.name
-        };
+   ListTransfer: (transferData : ListTransferResponse): Transfer[] => {
+        return transferData.transfers.map(transfer => ({
+            value: transfer.value,
+            date: transfer.date,
+            currency: transfer.currency,
+            payeerDocument: transfer.payeer.document,
+            payeerName: transfer.payeer.name
+        }));
     }
 
 }
