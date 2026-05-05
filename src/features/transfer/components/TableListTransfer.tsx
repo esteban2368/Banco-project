@@ -5,6 +5,7 @@ import { Button } from "../../../shared/components/Button";
 import { Input } from "../../../shared/components/Input";
 
 import { RotateCcw } from 'lucide-react';
+import { formatDate } from "../../../shared/utils/dateUtil";
 
 type GetListTransferPromise = ReturnType<typeof transferService.getTransfers>;
 
@@ -80,8 +81,8 @@ export const TableListTransfer = ({ promiseListTransfer }: { promiseListTransfer
                                 key={transfer.payeerDocument}
                                 className="border-b border-[var(--color-neutral-200)] hover:bg-[var(--color-background)] transition-colors"
                                 >
-                                    <td className="py-4 px-4 text-sm text-primary">
-                                        {transfer.date}
+                                    <td className="py-4 px-4 text-sm text-primary font-bold">
+                                        {formatDate(transfer.date)}
                                     </td>
                                     <td className="py-4 px-4 text-sm text-primary font-medium">
                                         {transfer.payeerName}
