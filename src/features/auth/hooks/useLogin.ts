@@ -24,8 +24,10 @@ export const useLogin = () => {
         
         const user = await authService.login(formDataLogin);
 
-        login(user.data as User, user.data?.token as string);
-        navegate('/dashboard');
+        if (user.success) {
+            login(user.data as User, user.data?.token as string);
+            navegate('/dashboard');
+        }
 
         return {
             success: user.success,
