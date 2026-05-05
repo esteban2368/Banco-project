@@ -9,10 +9,14 @@ export const TransferForm = () => {
     return (
         <div>
             <form action={dispatch}>
-                <Input label="Documento" name="payeerDocument" />
-                <Input type="number" label="Valor" name="value" />
-                <Input label="Moneda" name="currency" />
-                <Input type="date" label="Fecha de Transferencia" name="transferDate" />
+                <Input label="Documento" defaultValue={state.inputs?.payeerDocument}  name="payeerDocument" />
+                {state.errors?.payeerDocument && <p style={{ color: 'red' }}>{state.errors.payeerDocument}</p>}
+                <Input type="number" defaultValue={state.inputs?.value} label="Valor" name="value" />
+                {state.errors?.value && <p style={{ color: 'red' }}>{state.errors.value}</p>}
+                <Input label="Moneda" defaultValue={state.inputs?.currency} name="currency" />
+                {state.errors?.currency && <p style={{ color: 'red' }}>{state.errors.currency}</p>}
+                <Input type="date" label="Fecha de Transferencia" defaultValue={state.inputs?.transferDate} name="transferDate" />
+                {state.errors?.transferDate && <p style={{ color: 'red' }}>{state.errors.transferDate}</p>}
                 <Button type="submit" disabled={isPending}>
                     {isPending ? "Creando Transferencia..." : "Confirmar Transferencia"}
                 </Button>
