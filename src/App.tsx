@@ -8,6 +8,7 @@ import { Guard } from './shared/components/Guard';
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import TransferPage from "./pages/TransferPage";
+import HistoryPage from './pages/HistoryPage';
 
 import { useAuth } from './features/auth/store/AuthContenxt';
 
@@ -24,6 +25,7 @@ function App() {
         <Route element={<Guard isAutorizated={isAutorizated}>  <Layout /></Guard>}>
           <Route path='/dashboard' element={<DashboardPage />} />
           <Route path='/transfer' element={<TransferPage />} />
+          <Route path='/transfer-history' element={<HistoryPage />} />
         </Route>
       </Routes>
   )
