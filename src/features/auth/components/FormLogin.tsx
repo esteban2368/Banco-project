@@ -11,7 +11,7 @@ export const FormLogin = () => {
             <form action={dispatch}>
                 <Input label="Email" name="email" />
                 <Input label="Password" name="password" type="password" />
-                <Button type="submit" disabled={isPending}>
+                <Button type="submit" disabled={isPending} className="w-full">
                     {isPending ? "Ingresando" : "Ingresar"}
                 </Button>
                 {state.message && <p style={{ color: 'red' }}>{state.message}</p>}
