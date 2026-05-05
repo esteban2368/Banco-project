@@ -1,27 +1,33 @@
 import {  useActionState } from "react";
-import type { CreateTransferResponse, TransferApiRequest } from "../models/Transfer";
+import type { CreateTransferResponse } from "../models/Transfer";
 import { transferService } from "../services/transferService";
 
-const initialState: CreateTransferResponse = { status: "", message: null };
+import { createTransferSchema, type FormCreateTransferState } from "../components/TransferFormSchema";
+
+const initialState: FormCreateTransferState = {  message: '', errors: undefined, inputs: undefined };
 
 export const useCreateTransfer = () => {
     
     const createTransferAction = async (
-        prevState: unknown, 
-        formData: FormData): Promise<CreateTransferResponse> => {
+        prevState: FormCreateTransferState, 
+        formData: FormData): Promise<FormCreateTransferState> => {
 
-        console.log("prevState", prevState);
-        const formDataTransfer: TransferApiRequest = {
-            value: formData.get("value") as unknown as number,
-            payeerDocument: formData.get("payeerDocument") as string,
-            currency: formData.get("currency") as string,
-            transferDate: formData.get("transferDate") as string,
-        } 
+        const formDataTransfer =  Object.fromEntries(formData.entries());
+
+        const validated = createTransferSchema.safeParse(formDataTransfer);
+
+        if (!validated.success) {
+            return { 
+                errors: validated.error.flatten().fieldErrors,
+                inputs: formDataTransfer,
+            };
+        }
         
-        const createTransfer = await transferService.makeTransfer(formDataTransfer);
+        const createTransfer = await transferService.makeTransfer(validated.data);
 
         return {
-            status: createTransfer.status,
+            errors: undefined,
+            inputs: undefined,
             message: createTransfer.message
         }
     }
