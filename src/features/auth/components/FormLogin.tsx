@@ -7,7 +7,7 @@ export const FormLogin = () => {
     const { state, dispatch, isPending } = useLogin();
 
     return (
-        <div>
+        <div className="w-full max-w-md mx-auto rounded-2xl bg-white p-8 shadow-md border border-gray-100">
             <form action={dispatch}>
                 <Input label="Email" name="email" />
                 <Input label="Password" name="password" type="password" />

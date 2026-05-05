@@ -2,8 +2,8 @@ import { FormLogin } from "../features/auth/components/FormLogin";
 
 const LoginPage = () => {
     return (
-        <section className="">
-            <h2>Login Page</h2>
+        <section className="flex flex-col align-items-center justify-center h-svh gap-5">
+            <h2>BancoXYZ</h2>
             <FormLogin />
         </section>
     );
