@@ -4,7 +4,7 @@ export const transferAdapters = {
    Balance: (balanceData : BalanceApiResponse): Balance => {
         return {
             currency: balanceData.currency,
-            valueBalance: balanceData.accountBalance
+            valueBalance: Number(balanceData.accountBalance)
         };
    },
 

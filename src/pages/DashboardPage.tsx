@@ -1,12 +1,15 @@
-
+import { cn } from "../shared/utils/styles";
+import { ContainerPage } from "../shared/components/ContainerPage";
 import { CardBalance } from "../features/transfer/components/CardBalance";
 
+import { useAuth } from "../features/auth/store/AuthContenxt";
+
 const DashboardPage = () => {
+    const { currentUser } = useAuth();
     return (
-        <div>
-            <h1>Dashboard</h1>
+        <ContainerPage title={`Bienvenido, ${currentUser?.name}`}>
             <CardBalance />
-        </div>
+        </ContainerPage>
     );
 };
 

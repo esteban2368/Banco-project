@@ -13,7 +13,7 @@ export interface Payeer {
 
 export interface Balance {
     currency: string;
-    valueBalance: string
+    valueBalance: number
 }
 
 export interface TransferApiRequest {
