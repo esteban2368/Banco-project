@@ -6,11 +6,11 @@ const Layout = () => {
     return (
         <section>
             <Header />
-            <div className="grid md:grid-cols-12 md:grid-rows-4 auto-rows-fr gap-6">
-                <div className="col-span-3 row-span-4">
+            <div className="grid md:grid-cols-12 md:grid-rows-1 auto-rows-fr gap-6">
+                <div className="col-span-3 ">
                     <AsideMenu/>
                 </div>
-                <main className="col-span-9 row-span-8">
+                <main className="col-span-9 ">
                     <Outlet />
                 </main>
             </div>
