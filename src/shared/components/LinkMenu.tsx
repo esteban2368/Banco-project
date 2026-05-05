@@ -14,7 +14,7 @@ export const LinkMenu = ({
   variant = "header",
 }: LinkMenuProps) => {
   const { pathname } = useLocation();
-  const isActive = pathname === to;
+  const isActive = pathname.startsWith(to);
 
   const base = `
     flex items-center gap-2
