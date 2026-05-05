@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { TransferApiRequest, BalanceApiResponse, CreateTransferResponse } from "../models/Transfer";
+import type { TransferApiRequest, BalanceApiResponse, CreateTransferResponse, ListTransferResponse } from "../models/Transfer";
 import { transferAdapters } from "../adapters/transferBalance";
 
 import { PublicInterceptor } from "../../../shared/interceptors/PublicInterceptor";
@@ -41,7 +41,21 @@ export const transferService = {
     },
 
     getTransfers : async () => {
-        return await transferListApi.get("/transferList");
+        try {
+            const response = await transferListApi.get<ListTransferResponse>("/transferList");
+            return {
+                success: true,
+                data: transferAdapters.ListTransfer(response.data),
+                message: null
+            }
+        } catch (error: any) {
+            return {
+                success: false,
+                data: null,
+                message: error.response?.data?.message ||
+                "Error al obtener las transferencias.",
+            };
+        }
     },
 
     getBalance : async () => {
