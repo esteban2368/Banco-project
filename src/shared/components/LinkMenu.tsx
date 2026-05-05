@@ -14,7 +14,7 @@ export const LinkMenu = ({
   variant = "header",
 }: LinkMenuProps) => {
   const { pathname } = useLocation();
-  const isActive = pathname.startsWith(to);
+  const isActive = pathname === to;
 
   const base = `
     flex items-center gap-2
@@ -31,7 +31,7 @@ export const LinkMenu = ({
     sidebar: `
       px-3 py-2 rounded-md
       text-sm
-      text-secondary]
+      text-secondary
       hover:bg-[var(--color-background)]
     `,
   };
