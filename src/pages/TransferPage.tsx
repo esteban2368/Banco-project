@@ -1,11 +1,12 @@
+import { ContainerPage } from "../shared/components/ContainerPage";
 import { TransferForm } from "../features/transfer/components/TransferForm";
 
 const TransferPage = () => {
     return (
-        <div>
-            <h1>Transferencia</h1>
+        <ContainerPage title={`Realizar una transferencia`}>
             <TransferForm />
-        </div>
+        </ContainerPage>
+            
     );
 };
 

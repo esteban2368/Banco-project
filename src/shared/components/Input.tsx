@@ -3,7 +3,7 @@ import React from "react";
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   name: string;
-  error?: string;
+  error?: string[];
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
 }
@@ -17,7 +17,7 @@ export const Input = ({
   className,
   ...props
 }: InputProps) => {
-  const hasError = Boolean(error);
+  const hasError = Boolean(error?.length);
 
   return (
     <div className="flex flex-col gap-1.5 w-full">
@@ -42,7 +42,7 @@ export const Input = ({
           
           ${hasError 
             ? "border-[var(--color-error)] focus-within:ring-2 focus-within:ring-[var(--color-error)]" 
-            : "border-[var(--color-neutral-200)] focus-within:ring-2 focus-within:ring-primary]"
+            : "border-[var(--color-neutral-200)] focus-within:ring-2 focus-within:ring-primary"
           }
         `}
       >
@@ -57,7 +57,7 @@ export const Input = ({
           name={name}
           className={`
             w-full bg-transparent outline-none text-sm
-            text-primary]
+            text-primary
             placeholder:text-[var(--color-neutral-300)]
           `}
           {...props}
@@ -71,9 +71,13 @@ export const Input = ({
       </div>
 
       {hasError && (
-        <p className="text-xs text-[var(--color-error)]">
-          {error}
-        </p>
+        <div>
+          {error?.map((item, index) => (
+            <p key={index} className="text-xs text-[var(--color-error)]">
+              {item}
+            </p>
+          ))}
+        </div>
       )}
     </div>
   );
