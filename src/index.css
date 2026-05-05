@@ -3,6 +3,41 @@
 
 
 @theme {
+
+  --color-primary: rgba(26, 43, 75, 1);
+  --color-primary-600: rgba(22, 37, 63, 1);
+  --color-primary-700: rgba(18, 31, 52, 1);
+  --color-primary-800: rgba(13, 25, 40, 1);
+
+
+  --color-secondary: rgba(0, 209, 193, 1);
+  --color-secondary-400: rgba(26, 255, 214, 1);
+  --color-secondary-600: rgba(0, 168, 155, 1);
+
+
+  --color-background: rgba(244, 247, 250, 1);
+  --color-surface: rgba(255, 255, 255, 1);
+
+
+  --color-neutral: rgba(119, 119, 122, 1);
+  --color-neutral-200: rgba(207, 207, 210, 1);
+  --color-neutral-300: rgba(177, 177, 181, 1);
+  --color-neutral-700: rgba(71, 71, 74, 1);
+
+
+  --color-text-primary: rgba(26, 43, 75, 1);
+  --color-text-secondary: rgba(119, 119, 122, 1);
+  --color-text-inverted: rgba(255, 255, 255, 1);
+
+
+  --color-success: rgba(22, 163, 74, 1);
+  --color-error: rgba(220, 38, 38, 1);
+  --color-warning: rgba(245, 158, 11, 1);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
 }
 
