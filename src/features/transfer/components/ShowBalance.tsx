@@ -1,6 +1,5 @@
 
 import { use } from "react";
-import type { Balance } from "../models/Transfer";
 import { transferService } from "../services/transferService";
 
 type GetBalancePromise = ReturnType<typeof transferService.getBalance>;

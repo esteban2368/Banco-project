@@ -2,6 +2,8 @@ import axios from "axios";
 import type { TransferApiRequest, BalanceApiResponse } from "../models/Transfer";
 import { transferAdapters } from "../adapters/transferBalance";
 
+import { PublicInterceptor } from "../../../shared/interceptors/PublicInterceptor";
+
 const transferApi = axios.create({
     baseURL: "https://ofqx4zxgcf.execute-api.us-east-1.amazonaws.com/default",
 });
@@ -13,6 +15,11 @@ const transferListApi = axios.create({
 const balanceApi = axios.create({
     baseURL: "https://2k0ic4z7s5.execute-api.us-east-1.amazonaws.com/default",
 });
+
+PublicInterceptor(transferApi);
+PublicInterceptor(transferListApi);
+PublicInterceptor(balanceApi);
+
 
 export const transferService = {
     makeTransfer : async (transferData: TransferApiRequest) => {

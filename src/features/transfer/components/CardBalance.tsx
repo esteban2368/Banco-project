@@ -4,7 +4,7 @@ import type { Balance } from "../models/Transfer";
 import { ShowBalance } from "./ShowBalance";
 import { transferService } from "../services/transferService";
 
-export const CardBalance = ({ balance }: { balance: Balance }) => {
+export const CardBalance = () => {
     const promise = transferService.getBalance();
     return (
         <div>
