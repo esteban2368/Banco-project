@@ -7,7 +7,6 @@ export const ListTransfers = () => {
     const promise = transferService.getTransfers();
     return (
         <div>
-            <h2>Listado de transferencias</h2>
             <Suspense fallback={<p>Cargando transferencias</p>}>
                 <TableListTransfer promiseListTransfer={promise} />
             </Suspense> 

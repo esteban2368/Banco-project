@@ -2,6 +2,7 @@ import { useCreateTransfer } from "../hooks/useCreateTransfer";
 
 import { Input } from "../../../shared/components/Input";
 import { Button } from "../../../shared/components/Button";
+import { Alert } from "../../../shared/components/Alert";
 
 import { UserRoundSearch, DollarSign, Calendar } from 'lucide-react';
 
@@ -29,7 +30,15 @@ export const TransferForm = () => {
                         {isPending ? "Creando Transferencia..." : "Confirmar Transferencia"}
                     </Button>
                 </div>
-                {state.message && <p style={{ color: 'red' }}>{state.message}</p>}
+                <div className="w-full flex justify-center">
+                    {state.message &&
+                        <Alert
+                            variant={"success"}
+                            title={state.message}
+                            description=""
+                        />
+                    }
+                </div>
             </form>
         </div>
     );

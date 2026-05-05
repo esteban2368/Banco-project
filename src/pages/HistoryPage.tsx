@@ -1,11 +1,11 @@
 import { ListTransfers } from "../features/transfer/components/ListTransfers";
+import { ContainerPage } from "../shared/components/ContainerPage";
 
 const HistoryPage = () => {
     return (
-        <div>
-            <h2>Historial de transferencias</h2>
+        <ContainerPage title="Historial de transferencias">
             <ListTransfers />
-        </div>
+        </ContainerPage>
     )
 }
 

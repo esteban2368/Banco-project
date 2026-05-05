@@ -3,6 +3,7 @@ import { Button } from "../../../shared/components/Button";
 import { Mail, Eye } from "lucide-react";
 
 import { useLogin } from "../hooks/useLogin";
+import { Alert } from "../../../shared/components/Alert";
 
 export const FormLogin = () => {
     const { state, dispatch, isPending } = useLogin();
@@ -17,7 +18,13 @@ export const FormLogin = () => {
                 <Button type="submit" disabled={isPending} className="w-full">
                     {isPending ? "Ingresando" : "Ingresar"}
                 </Button>
-                {state.message && <p style={{ color: 'red' }}>{state.message}</p>}
+                {state.message &&
+                    <Alert
+                        variant={state.success ? "success": "error"}
+                        title={state.message}
+                        description=""
+                    />
+                }
             </form>
         </div>
     )
