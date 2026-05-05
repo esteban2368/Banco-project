@@ -40,7 +40,7 @@ export const TableListTransfer = ({ promiseListTransfer }: { promiseListTransfer
     
 
     return (
-        <div>
+        <div className="flex flex-col gap-6">
             <div className="rounded-xl bg-white p-6 shadow-md">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
                     <div className="md:col-span-3">
@@ -60,26 +60,51 @@ export const TableListTransfer = ({ promiseListTransfer }: { promiseListTransfer
                     </div>
                 </div>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Valor</th>
-                        <th>Fecha</th>
-                        <th>Moneda</th>
-                        <th>Nombre del pagador</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {filteredTransfers?.map((transfer, index) => (
-                        <tr key={transfer.payeerDocument}>
-                            <td>{transfer.value}</td>
-                            <td>{transfer.date}</td>
-                            <td>{transfer.currency}</td>
-                            <td>{transfer.payeerName}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <div className="rounded-xl bg-white p-6 shadow-md">
+                <table className="w-full border-collapse">
+                        <thead>
+                            <tr className="text-left text-xs uppercase tracking-wide text-primary border-b border-[var(--color-neutral-200)]">
+                                <th className="py-3 px-4">Fecha</th>
+                                <th className="py-3 px-4">Nombre</th>
+                                <th className="py-3 px-4">Moneda</th>
+                                <th className="py-3 px-4">Valor</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {filteredTransfers?.map((transfer) => {
+                            const isPositive = transfer.value > 0;
+
+                            return (
+                                <tr
+                                key={transfer.payeerDocument}
+                                className="border-b border-[var(--color-neutral-200)] hover:bg-[var(--color-background)] transition-colors"
+                                >
+                                    <td className="py-4 px-4 text-sm text-primary">
+                                        {transfer.date}
+                                    </td>
+                                    <td className="py-4 px-4 text-sm text-primary font-medium">
+                                        {transfer.payeerName}
+                                    </td>
+                                    <td className="py-4 px-4">
+                                        <span className="
+                                        text-xs px-2 py-1
+                                        rounded-full
+                                        bg-[var(--color-background)]
+                                        text-secondary
+                                        ">
+                                        {transfer.currency}
+                                        </span>
+                                    </td>
+                                    <td className={`py-4 px-4 font-medium ${isPositive ? "text-[var(--color-success)]" : "text-primary"}`}>
+                                        {transfer.value}
+                                    </td>
+                                </tr>
+                            );
+                            })}
+                        </tbody>
+                </table>
+            </div>
         </div>
     )
 }
