@@ -1,15 +1,18 @@
 import { use, useState } from "react";
 import { transferService } from '../services/transferService';
+import { Button } from "../../../shared/components/Button";
 
 type GetListTransferPromise = ReturnType<typeof transferService.getTransfers>;
 
+const InitialStateFilters = {
+    value: '',
+    date: '',
+    payeerName: ''
+}
+
 export const TableListTransfer = ({ promiseListTransfer }: { promiseListTransfer: GetListTransferPromise  }) => {
     const listTransfer = use(promiseListTransfer);
-    const [ filters, setFilters ] = useState({
-        value: '',
-        date: '',
-        payeerName: ''
-    })
+    const [ filters, setFilters ] = useState(InitialStateFilters)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -17,6 +20,10 @@ export const TableListTransfer = ({ promiseListTransfer }: { promiseListTransfer
             ...filters,
             [name]: value
         })
+    }
+    
+    const clearFilters = () => {
+        setFilters(InitialStateFilters)
     }
 
     const filteredTransfers = listTransfer.data?.filter(transfer => {
@@ -31,8 +38,9 @@ export const TableListTransfer = ({ promiseListTransfer }: { promiseListTransfer
     return (
         <div>
             <input type="text" name="value" value={filters.value} onChange={handleChange} placeholder="Filtrar por valor"/>
-            <input type="text" name="date" value={filters.date} onChange={handleChange} placeholder="Filtrar por fecha"/>
+            <input type="date" name="date" value={filters.date} onChange={handleChange} placeholder="Filtrar por fecha"/>
             <input type="text" name="payeerName" value={filters.payeerName} onChange={handleChange} placeholder="Filtrar por nombre"/>
+            <Button onClick={clearFilters}>Limpiar</Button>
             <table>
                 <thead>
                     <tr>
