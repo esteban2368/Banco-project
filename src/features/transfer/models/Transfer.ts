@@ -2,7 +2,8 @@ export interface Transfer {
     value: number;
     date: string;
     currency: string;
-    payeer: Payeer;
+    payeerDocument: string;
+    payeerName: string;
 }
 
 export interface Payeer {
@@ -20,6 +21,16 @@ export interface TransferApiRequest {
     payeerDocument: string;
     currency: string;
     transferDate: string;
+}
+
+export interface ListTransferResponse {
+    message: string;
+    transfer: {
+        value: number;
+        date: string;
+        currency: string;
+        payeer: Payeer;
+    }
 }
 
 export interface CreateTransferResponse { 
