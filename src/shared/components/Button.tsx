@@ -1,7 +1,36 @@
-export const Button = ({ children, ...props }: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
-    return (
-        <button {...props}>
-            {children}
-        </button>
-    )
-}
+import { cn } from "../utils/styles"; 
+
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: "primary" | "secondary" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg";
+};
+
+const baseStyles =
+  "inline-flex items-center justify-center rounded-xl font-medium transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
+
+const variants = {
+  primary: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500",
+  secondary: "bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-400",
+  outline: "border border-gray-300 text-gray-900 hover:bg-gray-50",
+  ghost: "text-gray-900 hover:bg-gray-100",
+};
+
+const sizes = {
+  sm: "h-9 px-3 text-sm",
+  md: "h-11 px-4 text-sm",
+  lg: "h-12 px-6 text-base",
+};
+
+export const Button = ({
+  className,
+  variant = "primary",
+  size = "md",
+  ...props
+}: ButtonProps) => {
+  return (
+    <button
+      className={cn(baseStyles, variants[variant], sizes[size], className)}
+      {...props}
+    />
+  );
+};
