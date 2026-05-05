@@ -8,7 +8,7 @@ export const  AsideMenu = () => {
                 <ul>
                     <li><Link to="/dashboard">Dashboard</Link></li>
                     <li><Link to="/transfer">Transfer</Link></li>
-                    <li><Link to="/transfer-history">Transfer</Link></li>
+                    <li><Link to="/transfer-history">History</Link></li>
                 </ul>
             </nav>
         </div>

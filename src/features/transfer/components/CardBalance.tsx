@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import type { Balance } from "../models/Transfer";
 
 import { ShowBalance } from "./ShowBalance";
 import { transferService } from "../services/transferService";
