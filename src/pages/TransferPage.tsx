@@ -1,6 +1,6 @@
 import { TransferForm } from "../features/transfer/components/TransferForm";
 
-export const TransferPage = () => {
+const TransferPage = () => {
     return (
         <div>
             <h1>Transferencia</h1>
@@ -8,3 +8,5 @@ export const TransferPage = () => {
         </div>
     );
 };
+
+export default TransferPage;

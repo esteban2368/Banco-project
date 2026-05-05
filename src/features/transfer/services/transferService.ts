@@ -33,7 +33,7 @@ export const transferService = {
             
         } catch (error: any) {
             return {
-                status: error.data.status,
+                status: error.response?.data?.status,
                 message: error.response?.data?.message ||
                 "Error al crear la transferencia.",
             }

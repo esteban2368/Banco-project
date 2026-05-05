@@ -10,7 +10,7 @@ export const TransferForm = () => {
         <div>
             <form action={dispatch}>
                 <Input label="Documento" name="payeerDocument" />
-                <Input label="Valor" name="value" />
+                <Input type="number" label="Valor" name="value" />
                 <Input label="Moneda" name="currency" />
                 <Input type="date" label="Fecha de Transferencia" name="transferDate" />
                 <Button type="submit" disabled={isPending}>
