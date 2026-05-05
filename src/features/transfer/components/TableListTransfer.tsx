@@ -61,7 +61,6 @@ export const TableListTransfer = ({ promiseListTransfer }: { promiseListTransfer
                     ))}
                 </tbody>
             </table>
-            <pre>{JSON.stringify(listTransfer.data, null, 2)}</pre>
         </div>
     )
 }
