@@ -16,6 +16,11 @@ export interface TransferApiRequest {
     transferDate: string;
 }
 
+export interface CreateTransferResponse { 
+    success: boolean; 
+    message: string | null 
+}
+
 export interface BalanceApiResponse {
     currency: string;
     accountBalance: string;
