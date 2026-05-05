@@ -1,5 +1,4 @@
 import {  useActionState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
 
 import type { CreateTransferResponse, TransferApiRequest } from "../models/Transfer";
 import { transferService } from "../services/transferService";
@@ -7,7 +6,6 @@ import { transferService } from "../services/transferService";
 const initialState: CreateTransferResponse = { status: "", message: null };
 
 export const useCreateTransfer = () => {
-    const navegate = useNavigate();
     
     const createTransferAction = async (
         prevState: unknown, 
