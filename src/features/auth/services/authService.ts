@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { User, LoginRequest, LoginResponse, AuthResponse } from "../models/User";
+import type { LoginRequest, LoginResponse, AuthResponse } from "../models/User";
 import { authAdapters } from "../adapters/authAdapters";
 
 const authApi = axios.create({

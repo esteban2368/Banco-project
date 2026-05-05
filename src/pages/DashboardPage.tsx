@@ -1,4 +1,3 @@
-import { cn } from "../shared/utils/styles";
 import { ContainerPage } from "../shared/components/ContainerPage";
 import { CardBalance } from "../features/transfer/components/CardBalance";
 

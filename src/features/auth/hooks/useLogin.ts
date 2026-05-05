@@ -1,5 +1,5 @@
 import {  useActionState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import type { User, LoginRequest, AuthResponse } from "../models/User";
 import { authService } from "../services/authService";

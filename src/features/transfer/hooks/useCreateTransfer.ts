@@ -1,5 +1,4 @@
 import {  useActionState } from "react";
-import type { CreateTransferResponse } from "../models/Transfer";
 import { transferService } from "../services/transferService";
 
 import { createTransferSchema, type FormCreateTransferState } from "../components/TransferFormSchema";
@@ -12,6 +11,7 @@ export const useCreateTransfer = () => {
         prevState: FormCreateTransferState, 
         formData: FormData): Promise<FormCreateTransferState> => {
 
+        prevState; 
         const formDataTransfer =  Object.fromEntries(formData.entries());
 
         const validated = createTransferSchema.safeParse(formDataTransfer);
