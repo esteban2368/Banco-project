@@ -1,7 +1,7 @@
 import z from "zod";
 
 const createTransferSchema = z.object({
-    value: z.number().positive("El valor debe ser un número."),
+    value: z.coerce.number().positive("El valor debe ser un número.").min(1, "El valor debe ser mayor a 0."),
     payeerDocument: z.string().min(1, "El documento del pagador es requerido."),
     currency: z.string().min(1, "La moneda es requerida."),
     transferDate: z.string().min(1, "La fecha de transferencia es requerida."),
