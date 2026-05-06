@@ -5,15 +5,15 @@ import { transferAdapters } from "../adapters/transferBalance";
 import { PublicInterceptor } from "../../../shared/interceptors/PublicInterceptor";
 
 const transferApi = axios.create({
-    baseURL: "https://ofqx4zxgcf.execute-api.us-east-1.amazonaws.com/default",
+    baseURL: "/api-transfer",
 });
 
 const transferListApi = axios.create({
-    baseURL: "https://n0qaa2fx3c.execute-api.us-east-1.amazonaws.com/default",
+    baseURL: "/transferlist",
 });
 
 const balanceApi = axios.create({
-    baseURL: "https://2k0ic4z7s5.execute-api.us-east-1.amazonaws.com/default",
+    baseURL: "/api-balance-list",
 });
 
 PublicInterceptor(transferApi);
